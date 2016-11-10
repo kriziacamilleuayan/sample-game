@@ -8,11 +8,20 @@
 
 .losses{
 	color: red;
+	 word-wrap: break-word;
+	 width: 100%;
 }
 
 .gained{
 	color: green;
 	font-weight: bold;
+	word-wrap: break-word;
+	width: 100%;
+}
+
+.zero{
+	 word-wrap: break-word;
+	 width: 100%;
 }
 
 .got{
@@ -23,7 +32,7 @@
 	background-image: url('../images/cave.png');
 	background-color: transparent;
 	width: 100%;
-	height: 200px;
+	height: 500px;
 	border: none;
 	background-size: cover;
 }
@@ -32,7 +41,7 @@
 	background-image: url('../images/house.png');
 	background-color: transparent;
 	width: 100%;
-	height: 200px;
+	height: 500px;
 	border: none;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -42,7 +51,7 @@
 	background-image: url('../images/goldmine.png');
 	background-color: transparent;
 	width: 100%;
-	height: 200px;
+	height: 500px;
 	border: none;
 	background-size: cover;
 }
@@ -51,11 +60,43 @@
 	background-image: url('../images/casino.png');
 	background-color: transparent;
 	width: 100%;
-	height: 200px;
+	height: 500px;
 	border: none;
 	background-size: cover;
 }
 
 #ninja{
 	position: absolute;
+}
+
+/*carousel*/
+.carousel-indicators-numbers li {
+      text-indent: 0;
+      margin: 0 2px;
+      width: 20%;
+      height: inherit;
+      border: none;
+      border-radius: 10px;
+      line-height: 30px;
+      color: #fff;
+      background-color: #999;
+      transition: all 0.25s ease;
+      top: 300px !important;
+}
+.carousel-indicators-numbers li.active, .carousel-indicators-numbers li:hover{
+        margin: 0 2px;
+        width: 20%;
+        height: inherit;
+        background-color: #337ab7; 
+}
+.carousel-control {
+    position: absolute;
+    margin-bottom: 30px;
+    left: 0;
+    top: inherit;
+    width: initial;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: #286090;
 }

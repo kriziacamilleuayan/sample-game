@@ -9,77 +9,116 @@
 
 <div class="container">
 <br>
-	<div class="row">
-		<div style="display: flex; float: right;">
-			<p style="margin-right: 10px;">attempts: <span id="attempts">20</span></p>
-			<p style="margin-right: 10px;">gold: <span id="gold">0</span></p>
-			<input type="button" value="reset" id="reset" name="">
-		</div>
-	</div><br>
-
 
 	<div class="row">
-		<div class="col-lg-3">
-			<h1 align="center">CAVE</h1>
-			<button id="cave"></button>
+		<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+			<div class="container-fluid">
+				<div class="row">
+		            <div class="box-body">
+		              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		                <!-- Indicators --><br><br>
+		                <ol class="carousel-indicators carousel-indicators-numbers">
+		                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active">CAVE</li>
+		                  <li data-target="#carousel-example-generic" data-slide-to="1">HOUSE</li>
+		                  <li data-target="#carousel-example-generic" data-slide-to="2">GOLDMINE</li>
+		                  <li data-target="#carousel-example-generic" data-slide-to="3">CASINO</li>
+		                </ol>
+		                <!-- Wrapper for slides -->
+		                <div class="carousel-inner" role="listbox">
+		                  	<div class="item active">
+								<button id="cave"></button>
+		                    </div>
+		                  	<div class="item">
+		                    <div class="row">
+								<button id="house"></button>
+							</div>
+		                    </div>
+		                    <div class="item">
+		                    	<div class="row">
+									<button id="goldmine"></button>
+		                    	</div>
+		                    </div>
+		                    <div class="item">
+		                    	<div class="row">
+		                    		<button id="casino"></button>
+		                    	</div>
+		                    </div>
+		                  <!-- Controls -->
+		                  <a class=" btn btn-primary left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		                    Previous
+		                  </a>
+		                  <a class=" btn btn-primary right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		                    Next
+		                  </a>
+		                </div>
+		              </div><!-- /.box-body -->
+		            </div>
+				</div>
+			</div>
 		</div>
-		<div class="col-lg-3">
-			<h1 align="center">HOUSE</h1>
-			<button id="house"></button>
+		<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+			<div class="container-fluid">
+				<div class="row">
+					<div style="display: flex; float: right;">
+						<p style="margin-right: 10px;">attempts: <span id="attempts">20</span></p>
+						<p style="margin-right: 10px;">gold: <span id="gold">0</span></p>
+						<input type="button" value="reset" id="reset" name="">
+					</div>
+				</div>
+				<hr>
+				<div class="filters row" style="">
+					<h3>Log</h3>
+					<ul class="nav nav-tabs">
+					  <li class="active"><a data-toggle="tab" id="tab-all" href="#all">ALL</a></li>
+					  <li><a data-toggle="tab" id="tab-losses" href="#losses">Losses</a></li>
+					  <li><a data-toggle="tab" id="tab-gains" href="#gains">Gains</a></li>
+
+					</ul>
+
+					<div class="tab-content">
+					  <div id="all" class="tab-pane fade in active">
+					    	<div class="log">
+					    		<div class="container-fluid">
+					    			<div id="log"></div>
+					    		</div>
+					    	</div>
+					  </div>
+					  <div id="gains" class="tab-pane fade">
+					    	<div class="log">
+					    		<div class="container-fluid">
+					    			<div id="log-gained"></div>
+					    		</div>
+					    	</div>
+					  </div>
+					  <div id="losses" class="tab-pane fade">
+					    	<div class="log">
+					    		<div class="container-fluid">
+					    			<div id="log-losses"></div>
+					    		</div>
+					    	</div>
+					  </div>
+					</div>
+					<br>
+					<input type="button" name="all" id="btn-log-all" value="all">
+					<input type="button" name="house" id="btn-log-house" value="house">
+					<input type="button" name="chuchu" id="btn-log-cave" value="chu1">
+					<input type="button" name="chuchu2" id="btn-log-goldmine" value="chu2">
+					<input type="button" name="casino" id="btn-log-casino" value="casino">
+				</div>
+			</div>
 		</div>
-		<div class="col-lg-3">
-			<h1 align="center">GOLDMINE</h1>
-			<button id="goldmine"></button>
-		</div>
-		<div class="col-lg-3">
-			<h1 align="center">CASINO</h1>
-			<button id="casino"></button>
-		</div>
-	</div><br>
+	</div>
+
+	
+
+
+
 	<div class="row">
 		<img src="images/ninja.png" id="ninja" height="150" width="100">
 	</div>
 
 
-	<div class="filters" style="margin-top: 100px;">
-		<h3>Log</h3>
-		<ul class="nav nav-tabs">
-		  <li class="active"><a data-toggle="tab" id="tab-all" href="#all">ALL</a></li>
-		  <li><a data-toggle="tab" id="tab-losses" href="#losses">Losses</a></li>
-		  <li><a data-toggle="tab" id="tab-gains" href="#gains">Gains</a></li>
 
-		</ul>
-
-		<div class="tab-content">
-		  <div id="all" class="tab-pane fade in active">
-		    	<div class="log">
-		    		<div class="container">
-		    			<div id="log"></div>
-		    		</div>
-		    	</div>
-		  </div>
-		  <div id="gains" class="tab-pane fade">
-		    	<div class="log">
-		    		<div class="container">
-		    			<div id="log-gained"></div>
-		    		</div>
-		    	</div>
-		  </div>
-		  <div id="losses" class="tab-pane fade">
-		    	<div class="log">
-		    		<div class="container">
-		    			<div id="log-losses"></div>
-		    		</div>
-		    	</div>
-		  </div>
-		</div>
-		<br>
-		<!-- <input type="button" name="all" id="btn-log-all" value="all">
-		<input type="button" name="house" id="btn-log-house" value="house">
-		<input type="button" name="chuchu" id="btn-log-cave" value="chu1">
-		<input type="button" name="chuchu2" id="btn-log-goldmine" value="chu2">
-		<input type="button" name="casino" id="btn-log-casino" value="casino"> -->
-	</div>
 
 </div>
 

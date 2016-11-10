@@ -1,15 +1,7 @@
 var currentValue = 20;
 var gold = 0;
-var newgold;
-var house_rndm;
-var cave_random;
-var goldmine_random;
-var casino_random;
-var class_caller;
-var tab;
 var map = ["cave", "house", "goldmine", "casino"];
 
-var clicked = $.cookie('clicked');
 
 $(document).ready(function() {
 
@@ -29,11 +21,11 @@ $(document).ready(function() {
       cave_random = 5;
       newgold = gold + cave_random;
       gold = newgold;
-      $("#ninja").animate({left: '200px'});
-      $('#attempts').text(currentValue);
-      $('#gold').text(newgold).removeClass().addClass("gained");
-      $('#log, #log-gained').append('<p class="log-cave gained">Ninja looted a ' + map[0] + ' at ' + date_now + ' and gained ' + cave_random + ' golds.</p>');
-
+      $("#ninja").animate({left: '200px'}); //animation of ninja
+      $('#attempts').text(currentValue); //show # of attempts left
+      $('#gold').text(newgold).removeClass().addClass("gained"); //add class on gold
+      $('#log, #log-gained').append('<p class="log-cave gained">Ninja looted a ' + map[0] + ' at ' + date_now + ' and gained ' + cave_random + ' golds.</p>'); //write on log
+      $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow"); //scroll always on bottom
     });
 
     $('#house').click(function(){
@@ -61,6 +53,8 @@ $(document).ready(function() {
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
         $('<p class="' + class_caller + '">Ninja looted a ' + map[1] + ' at ' + date_now + ' and ' + class_caller + ' ' + house_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
+        $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow");
+        
     });
 
     $('#goldmine').click(function(){
@@ -88,7 +82,7 @@ $(document).ready(function() {
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
         $('<p class="' + class_caller + '">Ninja looted a ' + map[2] + ' at ' + date_now + ' and ' + class_caller + ' ' + goldmine_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
-
+        $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow");
   			// $('#log, #log-gained').append('<p class="log-goldmine gained">You looted a ' + map[2] + ' at ' + date_now + ' and gained ' + goldmine_random + ' golds.</p>');
   			
     });
@@ -118,6 +112,7 @@ $(document).ready(function() {
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
         $('<p class="' + class_caller + '">Ninja looted a ' + map[3] + ' at ' + date_now + ' and ' + class_caller + ' ' + casino_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
+        $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow");
     });
 
 
@@ -138,6 +133,7 @@ $(document).ready(function() {
     });
  
 
+    // another filter that i set per map... but too lazy to do this
 
   // $('#btn-log-house').click(function(){
   // 		$(".log-casino, .log-casino2, .log-goldmine, .log-cave").hide();
