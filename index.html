@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>sample game</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div align="right">
+	<p>attempts: <span id="attempts">20</span></p>
+	<p>gold: <span id="gold">0</span></p>
+	<input type="button" value="reset" id="reset" name="">
+</div>
+
+<div>
+	<input type="button" name="house" id="house" value="house">
+	<input type="button" name="chuchu" id="cave" value="cave">
+	<input type="button" name="chuchu2" id="chu" value="chu">
+	<input type="button" name="casino" id="casino" value="casino">	
+</div>
+
+
+<div class="filters" style="margin-top: 100px;">
+	<h3>Filters</h3>
+	<input type="button" name="all" id="btn-log-all" value="all">
+	<input type="button" name="house" id="btn-log-house" value="house">
+	<input type="button" name="chuchu" id="btn-log-cave" value="chu1">
+	<input type="button" name="chuchu2" id="btn-log-chu" value="chu2">
+	<input type="button" name="casino" id="btn-log-casino" value="casino">
+</div>
+<div id="log">
+
+</div>
+
+
+
+<script type="text/javascript" src="js/jquery-3.1.1.slim.min.js"></script>
+	<script type="text/javascript">
+		var currentValue = 20;
+		var gold = 0;
+		var newgold;
+		var house_rndm;
+		var cave_random;
+		var chu_random;
+		var casino_random;
+		var currentURL = document.URL;
+
+		// function house_random(min,max)
+		// {
+		//     return Math.floor(Math.random()*(max-min+1)+min);
+		// }
+		 
+
+		$(document).ready(function() {
+
+		  $('#house, #chuchu, #chuchu2, #casino').click(function() {
+		    if (currentValue <= 0) {
+		      // currentValue--;
+		      // $('#attempts').text(currentValue);
+		      alert("you have no attempts");
+		    }
+		    else{
+		    	//alert("you have no attempts");
+		    }
+		  });
+
+		  $('#reset').click(function(){
+		  	currentValue = 20;
+		  	gold = 0;
+		  	$('#attempts').text(currentValue);
+		  	$('#gold').text(gold);
+			document.getElementById("log").innerHTML = '';
+		  });
+
+		  $('#house').click(function(){
+		  		for (a = 0; a < currentValue ; a++) {
+		  			currentValue--;
+		  			house_random = Math.floor(Math.random()*(8-4+1)+4); //(max-min+1)+min
+		  			newgold = gold + house_random;
+		  			gold = newgold;
+		  			$('#attempts').text(currentValue);
+		  			$('#gold').text(newgold);
+		  			$('#log').append('<p class="log-house">You looted a house and got ' + house_random + ' golds.</p>');
+		  			break;
+		  		}
+		  });
+		  $('#cave').click(function(){
+		  		for (a = 0; a < currentValue ; a++) {
+		  			currentValue--;
+		  			cave_random = Math.floor(Math.random()*(10-8+1)+8); //(max-min+1)+min
+		  			newgold = gold + cave_random;
+		  			gold = newgold;
+		  			$('#attempts').text(currentValue);
+		  			$('#gold').text(newgold);
+		  			$('#log').append('<p class="log-cave">You looted a cave and got ' + cave_random + ' golds.</p>');
+		  			break;
+		  		}
+		  });
+		  $('#chu').click(function(){
+		  		for (a = 0; a < currentValue ; a++) {
+		  			currentValue--;
+		  			chu_random = Math.floor(Math.random()*(12-9+1)+9); //(max-min+1)+min
+		  			newgold = gold + chu_random;
+		  			gold = newgold;
+		  			$('#attempts').text(currentValue);
+		  			$('#gold').text(newgold);
+		  			$('#log').append('<p class="log-chu">You looted a chu and got ' + chu_random + ' golds.</p>');
+		  			break;
+		  		}
+		  });
+		  $('#casino').click(function(){
+		  		for (a = 0; a < currentValue ; a++) {
+		  			currentValue--;
+		  			casino_random = Math.floor(Math.random()*(50+20+1)-20); //(max-min+1)+min
+		  			newgold = gold + casino_random;
+		  			gold = newgold;
+		  			$('#attempts').text(currentValue);
+		  			$('#gold').text(newgold);
+		  			if (casino_random < 0){
+		  				$('#log').append('<p class="log-casino">You looted a casino and lost ' + casino_random + ' golds.</p>');
+		  			}
+		  			else{
+		  				$('#log').append('<p class="log-casino2">You looted a casino and got ' + casino_random + ' golds.</p>');
+		  			}
+		  			break;
+		  		}
+		  });
+
+		  $('#btn-log-house').click(function(){
+		  		$(".log-casino, .log-casino2, .log-chu, .log-cave").hide();
+		  		$(".log-house").show();
+		  })
+		  $('#btn-log-cave').click(function(){
+		  		$(".log-casino, .log-casino2, .log-chu, .log-house").hide();
+		  		$(".log-cave").show();
+		  })
+		  $('#btn-log-casino').click(function(){
+		  		$(".log-house, .log-chu, .log-cave").hide();
+		  		$(".log-casino, .log-casino2").show();
+		  })
+		  $('#btn-log-chu').click(function(){
+		  		$(".log-casino, .log-casino2, .log-house, .log-cave").hide();
+		  		$(".log-chu").show();
+		  })
+		  $('#btn-log-all').click(function(){
+		  		$(".log-casino, .log-casino2, .log-chu, .log-cave, .log-house").show();
+		  })
+
+		});
+	</script>
+</body>
+</html>
