@@ -8,17 +8,36 @@
 <body>
 
 <div class="container">
-	<div align="right">
-		<p>attempts: <span id="attempts">20</span></p>
-		<p>gold: <span id="gold">0</span></p>
-		<input type="button" value="reset" id="reset" name="">
-	</div>
+<br>
+	<div class="row">
+		<div style="display: flex; float: right;">
+			<p style="margin-right: 10px;">attempts: <span id="attempts">20</span></p>
+			<p style="margin-right: 10px;">gold: <span id="gold">0</span></p>
+			<input type="button" value="reset" id="reset" name="">
+		</div>
+	</div><br>
 
-	<div>
-		<input type="button" name="chuchu" id="cave" value="cave">
-		<input type="button" name="house" id="house" value="house">
-		<input type="button" name="chuchu2" id="goldmine" value="goldmine">
-		<input type="button" name="casino" id="casino" value="casino">	
+
+	<div class="row">
+		<div class="col-lg-3">
+			<h1 align="center">CAVE</h1>
+			<button id="cave"></button>
+		</div>
+		<div class="col-lg-3">
+			<h1 align="center">HOUSE</h1>
+			<button id="house"></button>
+		</div>
+		<div class="col-lg-3">
+			<h1 align="center">GOLDMINE</h1>
+			<button id="goldmine"></button>
+		</div>
+		<div class="col-lg-3">
+			<h1 align="center">CASINO</h1>
+			<button id="casino"></button>
+		</div>
+	</div><br>
+	<div class="row">
+		<img src="images/ninja.png" id="ninja" height="150" width="100">
 	</div>
 
 
@@ -101,6 +120,7 @@
 </div><!-- /.modal -->
 
 <script type="text/javascript" src="js/jquery-3.1.1.slim.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 </body>

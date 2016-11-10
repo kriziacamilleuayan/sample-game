@@ -9,8 +9,9 @@ var class_caller;
 var tab;
 var map = ["cave", "house", "goldmine", "casino"];
 
-$(document).ready(function() {
+var clicked = $.cookie('clicked');
 
+$(document).ready(function() {
 
     $('#reset, #reset2, #reset3').click(function(){
     	currentValue = 20;
@@ -28,9 +29,11 @@ $(document).ready(function() {
       cave_random = 5;
       newgold = gold + cave_random;
       gold = newgold;
+      $("#ninja").animate({left: '200px'});
       $('#attempts').text(currentValue);
       $('#gold').text(newgold).removeClass().addClass("gained");
       $('#log, #log-gained').append('<p class="log-cave gained">Ninja looted a ' + map[0] + ' at ' + date_now + ' and gained ' + cave_random + ' golds.</p>');
+
     });
 
     $('#house').click(function(){
@@ -54,6 +57,7 @@ $(document).ready(function() {
         currentValue--;
   			newgold = gold + house_random;
   			gold = newgold;
+        $("#ninja").animate({left: '500px'});
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
         $('<p class="' + class_caller + '">Ninja looted a ' + map[1] + ' at ' + date_now + ' and ' + class_caller + ' ' + house_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
@@ -80,6 +84,7 @@ $(document).ready(function() {
   			currentValue--;
   			newgold = gold + goldmine_random;
   			gold = newgold;
+        $("#ninja").animate({left: '750px'});
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
         $('<p class="' + class_caller + '">Ninja looted a ' + map[2] + ' at ' + date_now + ' and ' + class_caller + ' ' + goldmine_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
@@ -109,6 +114,7 @@ $(document).ready(function() {
   			currentValue--;
   			newgold = gold + casino_random;
   			gold = newgold;
+        $("#ninja").animate({left: '1050px'});
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
         $('<p class="' + class_caller + '">Ninja looted a ' + map[3] + ' at ' + date_now + ' and ' + class_caller + ' ' + casino_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
@@ -131,6 +137,8 @@ $(document).ready(function() {
       }
     });
  
+
+
   // $('#btn-log-house').click(function(){
   // 		$(".log-casino, .log-casino2, .log-goldmine, .log-cave").hide();
   // 		$(".log-house").show();
