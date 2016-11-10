@@ -1,5 +1,20 @@
-#log{
-	border: 1px solid black; 
+.log{
+	border: 1px solid lightgray; 
 	height: 300px;
+	border-top: none;
 	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.losses{
+	color: red;
+}
+
+.gained{
+	color: green;
+	font-weight: bold;
+}
+
+.got{
+	color: black;
 }
