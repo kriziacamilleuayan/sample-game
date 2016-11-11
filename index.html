@@ -7,12 +7,19 @@
 </head>
 <body>
 
+
+<div id="result"></div>
+
 <div class="container">
 <br>
 
 	<div class="row">
 		<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 			<div class="container-fluid">
+				<div class="row">
+					<img src="images/map-bottom.jpg" class="img-responsive" style="position: relative;">
+					<img src="images/ninja.png" id="ninja" height="150" width="100" style="position: absolute; top: 10px;">
+				</div>
 				<div class="row">
 		            <div class="box-body">
 		              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -26,21 +33,29 @@
 		                <!-- Wrapper for slides -->
 		                <div class="carousel-inner" role="listbox">
 		                  	<div class="item active">
-								<button id="cave"></button>
+								<button id="cave">
+			                  		<img src="images/cave.jpg" class="img-responsive">
+								</button>
 		                    </div>
 		                  	<div class="item">
 		                    <div class="row">
-								<button id="house"></button>
+								<button id="house">
+									<img src="images/house.jpg" class="img-responsive">
+								</button>
 							</div>
 		                    </div>
 		                    <div class="item">
 		                    	<div class="row">
-									<button id="goldmine"></button>
+									<button id="goldmine">
+										<img src="images/goldmine.jpg" class="img-responsive">
+									</button>
 		                    	</div>
 		                    </div>
 		                    <div class="item">
 		                    	<div class="row">
-		                    		<button id="casino"></button>
+		                    		<button id="casino">
+		                    			<img src="images/casino.jpg" class="img-responsive">
+		                    		</button>
 		                    	</div>
 		                    </div>
 		                  <!-- Controls -->
@@ -67,6 +82,11 @@
 				</div>
 				<hr>
 				<div class="filters row" style="">
+				<div class="row" style="display: flex;">
+					<pstyle="margin-right: 10px;">Total gains: <span id="total-gains" class="gained" >0</span> </p>
+					<p>Total loses: <span id="total-loss" class="losses">0</span> </p>
+				</div>
+
 					<h3>Log</h3>
 					<ul class="nav nav-tabs">
 					  <li class="active"><a data-toggle="tab" id="tab-all" href="#all">ALL</a></li>
@@ -99,30 +119,24 @@
 					  </div>
 					</div>
 					<br>
-					<input type="button" name="all" id="btn-log-all" value="all">
+					<!-- <input type="button" name="all" id="btn-log-all" value="all">
 					<input type="button" name="house" id="btn-log-house" value="house">
 					<input type="button" name="chuchu" id="btn-log-cave" value="chu1">
 					<input type="button" name="chuchu2" id="btn-log-goldmine" value="chu2">
-					<input type="button" name="casino" id="btn-log-casino" value="casino">
+					<input type="button" name="casino" id="btn-log-casino" value="casino"> -->
 				</div>
 			</div>
 		</div>
 	</div>
 
-	
 
-
-
-	<div class="row">
-		<img src="images/ninja.png" id="ninja" height="150" width="100">
-	</div>
 
 
 
 
 </div>
 
-<div class="modal fade" id="modal-no-more-tries" tabindex="-1" role="dialog">
+<div class="modal fade" id="modal-no-more-tries" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -131,7 +145,9 @@
       </div>
       <div class="modal-body text-center">
         <p>Try Again.</p>
-        <div id="stat"></div>
+        <div class="stat"></div>
+        <div class="total-gain-stat"></div>
+        <div class="total-loss-stat"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="reset2" data-dismiss="modal">reset</button>
@@ -141,7 +157,7 @@
 </div><!-- /.modal -->
 
 
-<div class="modal fade" id="modal-you-won" tabindex="-1" role="dialog">
+<div class="modal fade" id="modal-you-won" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -150,10 +166,60 @@
       </div>
       <div class="modal-body text-center">
         <p>Play Again.</p>
-        <div id="stat"></div>
+        <div class="stat"></div>
+        <div class="total-gain-stat"></div>
+        <div class="total-loss-stat"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" id="reset3" data-dismiss="modal">reset</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="loot-house" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      	<img src="images/ninja-house.gif" class="img-responsive">
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="loot-cave" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      	<img src="images/ninja-cave.gif" class="img-responsive">
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="loot-goldmine" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      	<img src="images/ninja-goldmine.gif" class="img-responsive">
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="loot-casino" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      	<img src="images/ninja-casino.gif" class="img-responsive">
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

@@ -1,7 +1,9 @@
 var currentValue = 20;
 var gold = 0;
-var map = ["cave", "house", "goldmine", "casino"];
-
+var total_gain = 0;
+var total_loss = 0;
+var text = '{"map1":"cave","map2":"house","map3":"goldmine","map4":"casino"}';
+var obj = JSON.parse(text);
 
 $(document).ready(function() {
 
@@ -11,7 +13,10 @@ $(document).ready(function() {
     	$('#attempts').text(currentValue);
     	$('#gold').text(gold);
       $('#log, #log-gained, #log-losses').html('');
+      $('#total-gains, #total-loss').text('0');
+      $("#ninja").animate({left: '0%'});
     });
+
 
     $('#cave').click(function(){
       var now = new Date(Date.now());
@@ -21,10 +26,19 @@ $(document).ready(function() {
       cave_random = 5;
       newgold = gold + cave_random;
       gold = newgold;
-      $("#ninja").animate({left: '200px'}); //animation of ninja
+
+
+      var arr = [];
+      arr.push(total_gain);
+      arr = jQuery.map( arr, function( n ) {
+        return total_gain =  n + cave_random;
+      });
+      $("#total-gains").text(arr);
+      $('#loot-cave').modal('show');
+      $("#ninja").animate({left: '20%'}); //animation of ninja
       $('#attempts').text(currentValue); //show # of attempts left
       $('#gold').text(newgold).removeClass().addClass("gained"); //add class on gold
-      $('#log, #log-gained').append('<p class="log-cave gained">Ninja looted a ' + map[0] + ' at ' + date_now + ' and gained ' + cave_random + ' golds.</p>'); //write on log
+      $('#log, #log-gained').append('<p class="log-cave gained">Ninja looted a ' + obj.map1 + ' at ' + date_now + ' and gained ' + cave_random + ' golds.</p>'); //write on log
       $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow"); //scroll always on bottom
     });
 
@@ -49,10 +63,18 @@ $(document).ready(function() {
         currentValue--;
   			newgold = gold + house_random;
   			gold = newgold;
-        $("#ninja").animate({left: '500px'});
+
+        var arr = [];
+        arr.push(total_gain);
+        arr = jQuery.map( arr, function( n ) {
+          return total_gain =  n + house_random;
+        });
+        $("#total-gains").text(arr);
+        $('#loot-house').modal('show');
+        $("#ninja").animate({left: '40%'});
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
-        $('<p class="' + class_caller + '">Ninja looted a ' + map[1] + ' at ' + date_now + ' and ' + class_caller + ' ' + house_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
+        $('<p class="' + class_caller + '">Ninja looted a ' + obj.map2 + ' at ' + date_now + ' and ' + class_caller + ' ' + house_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
         $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow");
         
     });
@@ -78,10 +100,18 @@ $(document).ready(function() {
   			currentValue--;
   			newgold = gold + goldmine_random;
   			gold = newgold;
-        $("#ninja").animate({left: '750px'});
+
+        var arr = [];
+        arr.push(total_gain);
+        arr = jQuery.map( arr, function( n ) {
+          return total_gain =  n + goldmine_random;
+        });
+        $("#total-gains").text(arr);
+        $('#loot-goldmine').modal('show');
+        $("#ninja").animate({left: '65%'});
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
-        $('<p class="' + class_caller + '">Ninja looted a ' + map[2] + ' at ' + date_now + ' and ' + class_caller + ' ' + goldmine_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
+        $('<p class="' + class_caller + '">Ninja looted a ' + obj.map3 + ' at ' + date_now + ' and ' + class_caller + ' ' + goldmine_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
         $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow");
   			// $('#log, #log-gained').append('<p class="log-goldmine gained">You looted a ' + map[2] + ' at ' + date_now + ' and gained ' + goldmine_random + ' golds.</p>');
   			
@@ -97,21 +127,34 @@ $(document).ready(function() {
           tab = "#log-gained";
           casino_random = Math.floor(Math.random()*(50-40+1)+40); //(max-min+1)+min
           $("#gold").removeClass().addClass('gained');
+          var arr = [];
+          arr.push(total_gain);
+          arr = jQuery.map( arr, function( n ) {
+            return total_gain =  n + casino_random;
+          });
+          $("#total-gains").text(arr);
         }
         else{
           class_caller = "losses";
           tab = "#log-losses";
-          casino_random = Math.floor(Math.random()*(-40+50+1)-50); //(max-min+1)+min
+          casino_random = Math.floor(Math.random()*(-40+50-1)-50); //(max-min+1)+min
           $("#gold").removeClass().addClass('losses');
+          var arr = [];
+          arr.push(total_loss);
+          arr = jQuery.map( arr, function( n ) {
+            return total_loss =  n + casino_random;
+          });
+          $("#total-loss").text(arr);
         }
 
   			currentValue--;
   			newgold = gold + casino_random;
   			gold = newgold;
-        $("#ninja").animate({left: '1050px'});
+        $('#loot-casino').modal('show');
+        $("#ninja").animate({left: '80%'});
   			$('#attempts').text(currentValue);
   			$('#gold').text(newgold);
-        $('<p class="' + class_caller + '">Ninja looted a ' + map[3] + ' at ' + date_now + ' and ' + class_caller + ' ' + casino_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
+        $('<p class="' + class_caller + '">Ninja looted a ' + obj.map4 + ' at ' + date_now + ' and ' + class_caller + ' ' + casino_random + ' golds.</p>').appendTo('#log, ' + tab + '').addClass(''+ class_caller +'');
         $(".log, .log-losses, .log-gained").animate({ scrollTop: $(document).height() }, "slow");
     });
 
@@ -120,39 +163,18 @@ $(document).ready(function() {
       if (currentValue <= 0) {
         if (gold >= 250) {
           $('#modal-you-won').modal('show');
-          $('#stat').html('<p>Gold: <b>' + gold + '</b></p>');
         }
         else{
           $('#modal-no-more-tries').modal('show');
-          $('#stat').html('<p>Gold: <b>' + gold + '</b></p>');
         }
+          $('.stat').html('<p>Gold: <b>' + gold + '</b></p>');
+          $('.total-gain-stat').html('<p>Total golds gained: <b>' + total_gain + '</b></p>');
+          $('.total-loss-stat').html('<p>Total golds lost: <b>' + total_loss + '</b></p>');
       }
       else{
         //somethingss
       }
     });
- 
-
-    // another filter that i set per map... but too lazy to do this
-
-  // $('#btn-log-house').click(function(){
-  // 		$(".log-casino, .log-casino2, .log-goldmine, .log-cave").hide();
-  // 		$(".log-house").show();
-  // })
-  // $('#btn-log-cave').click(function(){
-  // 		$(".log-casino, .log-casino2, .log-goldmine, .log-house").hide();
-  // 		$(".log-cave").show();
-  // })
-  // $('#btn-log-casino').click(function(){
-  // 		$(".log-house, .log-goldmine, .log-cave").hide();
-  // 		$(".log-casino, .log-casino2").show();
-  // })
-  // $('#btn-log-goldmine').click(function(){
-  // 		$(".log-casino, .log-casino2, .log-house, .log-cave").hide();
-  // 		$(".log-goldmine").show();
-  // })
-  // $('#btn-log-all').click(function(){
-  // 		$(".log-casino, .log-casino2, .log-goldmine, .log-cave, .log-house").show();
-  // })
 
 });
+
